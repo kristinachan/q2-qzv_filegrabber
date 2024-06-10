@@ -1,8 +1,8 @@
 # q2-qzv_filegrabber
-view plot.png, grab raw-data.tsv or .csv, all within your interactive notebook! :)
-(saves you from having to download parent.qzv to local, drag to view.qiime2.org
-...and then downloading data.tsv / screenshotting plot.png from the web interface)
-...just to manually rename and reupload the data.tsv into your interactive notebook again.
+* view plot.png, grab raw-data.tsv or .csv, all within your interactive notebook! :)
+* (saves you from having to download parent.qzv to local, drag to view.qiime2.org
+* ...and then downloading data.tsv / screenshotting plot.png from the web interface)
+* ...just to manually rename and reupload the data.tsv into your interactive notebook again.
 
 for .tsv and .csv
 * allows you to access the .qzv raw data as a dataframe variable
