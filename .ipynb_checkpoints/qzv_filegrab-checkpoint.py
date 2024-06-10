@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.tsv', save=False):
+def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.tsv', save=False, plt_title='optional_plt_title_for_png'):
 
     """
     Extracts a specific file from a .qzv archive and optionally saves it to the parent directory.
@@ -13,7 +13,7 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
     Parameters:
     qzv_filepath_str (str): Path to the .qzv file.
     nested_raw_data_file_str (str): Relative path to the file within the .qzv archive. 
-                                    Can be: 'raw-data.tsv' (for alpha/beta diversity),  
+                                    Can be: '.tsv', '.png', 'raw-data.tsv' (for alpha/beta diversity),  
                                     'kruskal-wallis-pairwise-volume.csv' (for alpha diversity), 
                                     'permanova-pairwise.csv' (for beta diversity),
                                     'plot.png' (for lme), 'model_results.tsv' (for lme), etc..
@@ -67,6 +67,10 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
             # Copy the file to the output file path
             print(f'found: {os.path.basename(nested_raw_data_file_str)}') # in {raw_data_fp}')
             
+            
+                    
+
+            
             if nested_raw_data_file_str.endswith('.tsv'):
                 df = pd.read_csv(raw_data_fp, sep='\t' , dtype=str)
                 print(df.head(2))
@@ -83,6 +87,7 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
                 img = mpimg.imread(raw_data_fp)
                 plt.imshow(img)
                 plt.axis('off')
+                plt.title(f'{plt_title}')
                 plt.show()
 
                 if save==True:
@@ -99,23 +104,22 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
             
         else:
             shutil.rmtree(unzipped_qzv_dir)
+
             print(f"{nested_raw_data_file_str} not found in the zip archive")
             return None
 
-                    # Remove the unzipped directory
+
             
 
 # Example usage
 
 # import sys
-# sys.path.append('/home/kwchan/python_scripts')
+# sys.path.append('/home/kwchan/python_scripts/q2-qzv_filegrabber')
 # from qzv_filegrab import qzv_filegrabber 
 
-# qzv_filepath_str = '/home/kwchan/projects/2024-4-1_ctns_study/fecal/fecal_scrubbed_lme_dap_vcontrol_faith_pd_2_9.qzv'
-# nested_raw_data_file_str='plot.png' #or model_results.tsv
 
-# df = qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='model_results.tsv', save=False)
-# # df.head()
+qzv_filepath_str = '/home/kwchan/projects/2024-06-06_katharoseq-example-old/q2-katharoseq/outputs/result_fmp_example.qzv'
+# qzv_filepath_str = '/home/kwchan/projects/2024-4-1_ctns_study/fecal/fecal_scrubbed_lme_dap_vcontrol_alpha_observed_features.qzv'
+nested_raw_data_file_str= '.tsv' #'plot.png' #or model_results.tsv
 
-
-   
+df = qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str, save=False, plt_title='testertitle') #title will only show for pngs
