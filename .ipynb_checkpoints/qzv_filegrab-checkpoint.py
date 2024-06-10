@@ -118,8 +118,8 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
 # from qzv_filegrab import qzv_filegrabber 
 
 
-qzv_filepath_str = '/home/kwchan/projects/2024-06-06_katharoseq-example-old/q2-katharoseq/outputs/result_fmp_example.qzv'
-# qzv_filepath_str = '/home/kwchan/projects/2024-4-1_ctns_study/fecal/fecal_scrubbed_lme_dap_vcontrol_alpha_observed_features.qzv'
-nested_raw_data_file_str= '.tsv' #'plot.png' #or model_results.tsv
+# qzv_filepath_str = '/home/kwchan/projects/2024-06-06_katharoseq-example-old/q2-katharoseq/outputs/result_fmp_example.qzv'
+# # qzv_filepath_str = '/home/kwchan/projects/2024-4-1_ctns_study/fecal/fecal_scrubbed_lme_dap_vcontrol_alpha_observed_features.qzv'
+# nested_raw_data_file_str= '.tsv' #'plot.png' #or model_results.tsv
 
-df = qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str, save=False, plt_title='testertitle') #title will only show for pngs
+# df = qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str, save=False, plt_title='testertitle') #title will only show for pngs
