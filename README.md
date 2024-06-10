@@ -8,7 +8,7 @@ download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
 >sys.path.append('/path/to/parent/folder/python_scripts')\
 >from qzv_filegrab import qzv filegrabber
 
-#### def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.tsv', save=False):
+### def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.tsv', save=False):
 
  """
     Extracts a specific file from a .qzv archive and optionally saves it to the parent directory.
