@@ -5,11 +5,13 @@ view plot.png, grab raw-data.tsv or .csv, all within your interactive notebook! 
 ...just to manually rename and reupload the data.tsv into your interactive notebook again.
 
 for .tsv and .csv
-* allows you to save the data.tsv as parent_qzv_filename.tsv instead of having so many generic raw-data.tsv on your local that you have rename by hand
+* allows you to access the .qzv raw data as a dataframe variable
+* allows you to save the data.tsv as parent_qzv_filename.tsv\n 
+now you won't so many generic raw-data.tsv files on your local...and you won't have to rename/organize them by hand
 
 for .png
 * allows you to visualize the .png in your interactive notebook
-* allows you to add a specific title for that .png
+* allows you to add a specific title for that .png\n
 ** tip: plt_title=f'plot title: beta_diversity_{filepathname_or_changingvarible}' allows you to retitle your plots according to which file it takes in.
 
 ### to use:
