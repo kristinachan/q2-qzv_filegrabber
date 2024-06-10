@@ -4,9 +4,9 @@ view plot.png, grab raw-data.tsv, within your interactive notebook.
 ### to use:
 download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
 
-import sys\
-sys.path.append('/path/to/parent/folder/python_scripts')\
-from qzv_filegrab import qzv filegrabber
+>import sys\
+>sys.path.append('/path/to/parent/folder/python_scripts')\
+>from qzv_filegrab import qzv filegrabber
 
 #### def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.tsv', save=False):
 
