@@ -1,14 +1,26 @@
 # q2-qzv_filegrabber
-view plot.png, grab raw-data.tsv, within your interactive notebook.
+view plot.png, grab raw-data.tsv or .csv, all within your interactive notebook! :)
+(saves you from having to download parent.qzv to local, drag to view.qiime2.org
+...and then downloading data.tsv / screenshotting plot.png from the web interface)
+...just to manually rename and reupload the data.tsv into your interactive notebook again.
+
+for .tsv and .csv
+* allows you to save the data.tsv as parent_qzv_filename.tsv instead of having so many generic raw-data.tsv on your local that you have rename by hand
+
+for .png
+* allows you to visualize the .png in your interactive notebook
+* allows you to add a specific title for that .png
+** tip: plt_title=f'plot title: beta_diversity_{filepathname_or_changingvarible}' allows you to retitle your plots according to which file it takes in.
 
 ### to use:
 download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
 
 >import sys\
->sys.path.append('/path/to/parent/folder/python_scripts')\
->from qzv_filegrab import qzv filegrabber
+>sys.path.append('/path/to/parent/folder/python_scripts/q2-qzv_filegrabber')\
+>from qzvfilegrab import qzv filegrabber
 
-### qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='raw-data.tsv', save=False):
+### qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data.tsv', save=False, plt_title='optional_plt_title_for_png'):
+
 
     """
     Extracts a specific file from a .qzv archive and optionally saves it to the parent directory.
@@ -16,7 +28,9 @@ download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
     Parameters:
     qzv_filepath_str (str): Path to the .qzv file.
     nested_raw_data_file_str (str): Relative path to the file within the .qzv archive. 
-                                    Can be: '.tsv', '.png', 'raw-data.tsv' (for alpha/beta diversity),  
+                                    Input: filename/end of the filename 
+                                    '.tsv', '.csv', '.png', 
+                                    'raw-data.tsv' or 'data.tsv'(for alpha/beta diversity),  
                                     'kruskal-wallis-pairwise-volume.csv' (for alpha diversity), 
                                     'permanova-pairwise.csv' (for beta diversity),
                                     'plot.png' (for lme), 'model_results.tsv' (for lme), etc..
@@ -26,11 +40,15 @@ download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
                                     - unzip file in terminal to browse
                                     
     save (bool): If True, saves the extracted file to the parent directory of the .qzv file. Default is True.
+    plt_title (str): Takes in a string if yo want to add a title to your .png. 
+    
     
     Returns:
-    str: Path to the saved file if `save` is True, otherwise None.
+    str: Path to the saved file if `save` is True, 
+         otherwise returns df if .csv or .tsv, 
+         or displays if .png
     
     Example usage:
-    raw_data_fp = qzv_filegrabber('/path/to/file.qzv', nested_raw_data_file_str='raw-data.tsv', save=True)
-    qzv_filegrabber('/path/to/file.qzv', nested_raw_data_file_str='plot.png', save=False)
+    raw_data_fp = qzv_filegrabber('/path/to/file.qzv', nested_raw_data_file_str='data.tsv', save=True)
+    qzv_filegrabber('/path/to/file.qzv', nested_raw_data_file_str='plot.png', save=False, plt_title=f'optional_plt_title{changingvariable}_for_png')
     """
