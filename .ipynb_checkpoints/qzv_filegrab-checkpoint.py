@@ -98,6 +98,7 @@ def qzv_filegrabber(qzv_filepath_str, nested_raw_data_file_str='data/raw-data.ts
                 return None
             
         else:
+            shutil.rmtree(unzipped_qzv_dir)
             print(f"{nested_raw_data_file_str} not found in the zip archive")
             return None
 
