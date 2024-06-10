@@ -6,13 +6,18 @@ view plot.png, grab raw-data.tsv or .csv, all within your interactive notebook! 
 
 for .tsv and .csv
 * allows you to access the .qzv raw data as a dataframe variable
-* allows you to save the data.tsv as parent_qzv_filename.tsv\n 
-now you won't so many generic raw-data.tsv files on your local...and you won't have to rename/organize them by hand
+* allows you to save the data.tsv as parent_qzv_filename.tsv
+* yay: now you won't so many generic raw-data.tsv files on your local...and you won't have to rename/organize them by hand!
 
 for .png
 * allows you to visualize the .png in your interactive notebook
 * allows you to add a specific title for that .png\n
-** tip: plt_title=f'plot title: beta_diversity_{filepathname_or_changingvarible}' allows you to retitle your plots according to which file it takes in.
+* tip: plt_title=f'your_title: beta_diversity_{filepathname_or_changingvarible}' allows you to retitle your plots according to which file it takes in.
+
+this allows you to search through the .qzv zip file 
+will return the first file that ends in with *nested_raw_data_file_str
+* e.g. if there is only one raw-data.tsv in your .qzv and you're not sure if it's raw-data.tsv or raw_data.tsv 
+* ... then nested_raw_data_file_str='data.tsv' will both find it for you
 
 ### to use:
 download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
