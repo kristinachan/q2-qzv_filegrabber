@@ -61,48 +61,5 @@ download the qzv_filegrab.py into parent folder, e.g. python_scripts folder
     qzv_filegrabber('/path/to/file.qzv', nested_raw_data_file_str='plot.png', save=False, plt_title=f'optional_plt_title{changingvariable}_for_png')
     """
 
-Example usage to querey all stats into one dataframe:
 
-    """
-    from qiime2.plugins.diversity.visualizers import beta_group_significance
-
-    distance_matrix = {
-        'uwuf': core_metrics_subexp_subset.unweighted_unifrac_distance_matrix,
-        'wuf': core_metrics_subexp_subset.weighted_unifrac_distance_matrix,
-        'jcd': core_metrics_subexp_subset.jaccard_distance_matrix,
-        'bc': core_metrics_subexp_subset.bray_curtis_distance_matrix
-    }
-
-    analysis_columns = ['mouse_genotype_treatment'] #, 'mouse_genotype', 'mouse_treatment', 'mouse_age']
-    stats_summary_df_list = []
-
-    for key, distance_matrix in distance_matrix.items():
-        for analysis in analysis_columns:
-
-            permdisp = beta_group_significance(distance_matrix, metadata.get_column(f'{analysis}'), method='permdisp', pairwise=True)
-            permdisp_fp = f'{sampletype_dir}{core_metrics_dir}/permdisp_{key}_{preptype_label}_{subexp}_{subset}.qzv'
-            permdisp.visualization.save(permdisp_fp)
-            permdisp_summary_df = qzv_filegrabber(permdisp_fp, 'permdisp-pairwise.csv')
-            permdisp_summary_df['beta_method'] = key
-            permdisp_summary_df['stat_method'] = 'permdisp'
-            stats_summary_df_list.append(permdisp_summary_df)
-
-            permanova = beta_group_significance(distance_matrix, metadata.get_column(f'{analysis}'), method='permanova', pairwise=True)
-            permanova_fp = f'{sampletype_dir}{core_metrics_dir}/permanova_{key}_{preptype_label}_{subexp}_{subset}.qzv'
-            permanova.visualization.save(permanova_fp)   
-            permanova_summary_df = qzv_filegrabber(permanova_fp, 'permanova-pairwise.csv')
-            permanova_summary_df['beta_method'] = key
-            permanova_summary_df['stat_method'] = 'permanova'
-            stats_summary_df_list.append(permanova_summary_df)
-
-            anosim = beta_group_significance(distance_matrix, metadata.get_column(f'{analysis}'), method='anosim', pairwise=True)
-            anosim_fp = f'{sampletype_dir}{core_metrics_dir}/anosim_{key}_{key}_{preptype_label}_{subexp}_{subset}.qzv'
-            anosim.visualization.save(anosim_fp)
-            anosim_summary_df = qzv_filegrabber(anosim_fp, 'anosim-pairwise.csv')
-            anosim_summary_df['beta_method'] = key
-            anosim_summary_df['stat_method'] = 'anosim'
-            stats_summary_df_list.append(anosim_summary_df)
-
-    combined_df = pd.concat(stats_summary_df_list, ignore_index=True)
-    combined_df = combined_df.sort_values(by='q-value', ascending=True)
-    """ 
+ 
